@@ -233,6 +233,9 @@
         <button class="legal-toggle" onclick="toggleLegal('terms', this)" id="terms">
             Terms of Use <span class="arrow">▼</span>
         </button>
+        <button class="legal-toggle" onclick="toggleLegal('support', this)" id="support">
+            Support <span class="arrow">▼</span>
+        </button>
     </div>
 
     <div class="legal-content" id="privacy-content">
@@ -329,6 +332,36 @@
             <p>Questions? Email us at <a href="mailto:support@getbookfirst.com">support@getbookfirst.com</a></p>
         </div>
     </div>
+
+    <div class="legal-content" id="support-content">
+        <div class="legal-section">
+            <h2>Support</h2>
+            <p>Need help with BookFirst? We're here for you.</p>
+
+            <h3>Common Questions</h3>
+
+            <h3>How do I cancel my subscription?</h3>
+            <p>Go to your iPhone's <strong>Settings > Your Name > Subscriptions</strong>. Find BookFirst and tap Cancel Subscription. You'll keep access until the end of your current billing period.</p>
+
+            <h3>My apps aren't being blocked</h3>
+            <p>Make sure Screen Time permission is granted: <strong>Settings > Screen Time > BookFirst</strong>. If it's not connected, open BookFirst and go to Settings to reconnect.</p>
+
+            <h3>The barcode scanner isn't working</h3>
+            <p>Make sure you've granted camera permission: <strong>Settings > BookFirst > Camera</strong>. If the ISBN isn't recognized, you can add the book manually.</p>
+
+            <h3>How do I restore my purchase?</h3>
+            <p>Open BookFirst > Settings > Restore Purchases. Make sure you're signed in with the same Apple ID you used to purchase.</p>
+
+            <h3>I want to change my reading schedule</h3>
+            <p>Open BookFirst > Settings. You can adjust which days and times your apps are blocked.</p>
+
+            <h3>How do I delete my data?</h3>
+            <p>All your data is stored locally on your device. Deleting the app removes all data permanently. We don't store anything on external servers.</p>
+
+            <h3>Still need help?</h3>
+            <p>Email us at <a href="mailto:support@getbookfirst.com">support@getbookfirst.com</a> and we'll get back to you as soon as possible.</p>
+        </div>
+    </div>
 </section>
 
 <footer>
@@ -337,7 +370,7 @@
         <p style="margin-top: 8px;">
             <a href="#" onclick="toggleLegal('privacy', document.querySelector('#privacy')); return false;">Privacy Policy</a> &middot;
             <a href="#" onclick="toggleLegal('terms', document.querySelector('#terms')); return false;">Terms of Use</a> &middot;
-            <a href="mailto:support@getbookfirst.com">Contact</a>
+            <a href="#" onclick="toggleLegal('support', document.querySelector('#support')); return false;">Support</a>
         </p>
     </div>
 </footer>
