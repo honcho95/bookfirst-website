@@ -31,28 +31,21 @@
             padding: 0 24px;
         }
 
-        /* Hero */
         .hero {
             text-align: center;
             padding: 80px 0 60px;
         }
 
-        .hero-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+        .hero-icon { font-size: 48px; margin-bottom: 20px; }
 
         .hero h1 {
             font-family: 'Lora', serif;
             font-size: 40px;
             font-weight: 600;
-            color: var(--text);
             margin-bottom: 12px;
         }
 
-        .hero h1 span {
-            color: var(--terracotta);
-        }
+        .hero h1 span { color: var(--terracotta); }
 
         .hero p {
             font-size: 18px;
@@ -75,7 +68,6 @@
 
         .app-store-btn:hover { opacity: 0.85; }
 
-        /* Features */
         .features {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -90,72 +82,95 @@
             padding: 24px;
         }
 
-        .feature-card .icon {
-            font-size: 28px;
-            margin-bottom: 12px;
-        }
+        .feature-card .icon { font-size: 28px; margin-bottom: 12px; }
+        .feature-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+        .feature-card p { font-size: 14px; color: var(--text-secondary); }
 
-        .feature-card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .feature-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        /* Legal sections */
-        .legal {
-            padding: 60px 0 40px;
+        /* Legal toggle buttons */
+        .legal-buttons {
+            display: flex;
+            gap: 12px;
+            padding: 48px 0 24px;
             border-top: 1px solid var(--card-border);
         }
 
-        .legal h2 {
+        .legal-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 14px 24px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legal-toggle:hover {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+        }
+
+        .legal-toggle.active {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+            background: rgba(196, 119, 89, 0.06);
+        }
+
+        .legal-toggle .arrow {
+            transition: transform 0.2s;
+            font-size: 12px;
+        }
+
+        .legal-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Legal content */
+        .legal-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .legal-content.open {
+            max-height: 3000px;
+            opacity: 1;
+        }
+
+        .legal-section {
+            padding: 0 0 40px;
+        }
+
+        .legal-section h2 {
             font-family: 'Lora', serif;
             font-size: 28px;
             font-weight: 600;
             margin-bottom: 24px;
-            color: var(--text);
         }
 
-        .legal h3 {
+        .legal-section h3 {
             font-size: 16px;
             font-weight: 600;
             margin: 24px 0 8px;
-            color: var(--text);
         }
 
-        .legal p, .legal li {
+        .legal-section p, .legal-section li {
             font-size: 15px;
             color: var(--text-secondary);
             margin-bottom: 12px;
         }
 
-        .legal ul {
-            padding-left: 24px;
-            margin-bottom: 16px;
-        }
+        .legal-section ul { padding-left: 24px; margin-bottom: 16px; }
+        .legal-section li { margin-bottom: 6px; }
+        .legal-section a { color: var(--terracotta); text-decoration: none; }
+        .legal-section a:hover { text-decoration: underline; }
 
-        .legal li { margin-bottom: 6px; }
-
-        .legal-nav {
-            display: flex;
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .legal-nav a {
-            color: var(--terracotta);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-        }
-
-        .legal-nav a:hover { text-decoration: underline; }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 40px 0;
@@ -164,21 +179,18 @@
             font-size: 14px;
         }
 
-        footer a {
-            color: var(--terracotta);
-            text-decoration: none;
-        }
+        footer a { color: var(--terracotta); text-decoration: none; }
 
         @media (max-width: 600px) {
             .hero h1 { font-size: 32px; }
             .features { grid-template-columns: 1fr; }
             .hero { padding: 60px 0 40px; }
+            .legal-buttons { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-<!-- Hero -->
 <section class="hero">
     <div class="container">
         <div class="hero-icon">📖</div>
@@ -188,7 +200,6 @@
     </div>
 </section>
 
-<!-- Features -->
 <section class="container">
     <div class="features">
         <div class="feature-card">
@@ -214,113 +225,149 @@
     </div>
 </section>
 
-<!-- Legal -->
-<section class="container legal" id="privacy">
-    <div class="legal-nav">
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Use</a>
+<section class="container">
+    <div class="legal-buttons">
+        <button class="legal-toggle" onclick="toggleLegal('privacy', this)" id="privacy">
+            Privacy Policy <span class="arrow">▼</span>
+        </button>
+        <button class="legal-toggle" onclick="toggleLegal('terms', this)" id="terms">
+            Terms of Use <span class="arrow">▼</span>
+        </button>
     </div>
 
-    <h2>Privacy Policy</h2>
-    <p><strong>Last updated:</strong> March 24, 2026</p>
-    <p>BookFirst ("we", "our", "the app") is committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights.</p>
+    <div class="legal-content" id="privacy-content">
+        <div class="legal-section">
+            <h2>Privacy Policy</h2>
+            <p><strong>Last updated:</strong> March 24, 2026</p>
+            <p>BookFirst ("we", "our", "the app") is committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights.</p>
 
-    <h3>1. Data We Collect</h3>
-    <p><strong>Data stored on your device only (never sent to our servers):</strong></p>
-    <ul>
-        <li>Your reading sessions (pages read, time spent, notes)</li>
-        <li>Your book library (titles, authors, covers, progress)</li>
-        <li>Your reading schedule and preferences</li>
-        <li>Your reading streaks and statistics</li>
-        <li>Your first name (used for personalization in the app)</li>
-    </ul>
+            <h3>1. Data We Collect</h3>
+            <p><strong>Data stored on your device only (never sent to our servers):</strong></p>
+            <ul>
+                <li>Your reading sessions (pages read, time spent, notes)</li>
+                <li>Your book library (titles, authors, covers, progress)</li>
+                <li>Your reading schedule and preferences</li>
+                <li>Your reading streaks and statistics</li>
+                <li>Your first name (used for personalization in the app)</li>
+            </ul>
+            <p><strong>Data processed by third-party services:</strong></p>
+            <ul>
+                <li><strong>RevenueCat</strong> — processes subscription purchases. Receives your Apple ID transaction data (anonymized). <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a></li>
+                <li><strong>Apple Screen Time API</strong> — manages app blocking. We never see or store which specific apps you use. All Screen Time data stays within Apple's framework on your device.</li>
+                <li><strong>Google Books API / Open Library API</strong> — when you search for or scan a book, the search query (title or ISBN) is sent to these services to find book information. No personal data is included.</li>
+            </ul>
 
-    <p><strong>Data processed by third-party services:</strong></p>
-    <ul>
-        <li><strong>RevenueCat</strong> — processes subscription purchases. Receives your Apple ID transaction data (anonymized). <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a></li>
-        <li><strong>Apple Screen Time API</strong> — manages app blocking. We request which apps/categories to block, but we never see or store which specific apps you use. All Screen Time data stays within Apple's framework on your device.</li>
-        <li><strong>Google Books API / Open Library API</strong> — when you search for or scan a book, the search query (title or ISBN) is sent to these services to find book information. No personal data is included.</li>
-    </ul>
+            <h3>2. Data We Do NOT Collect</h3>
+            <ul>
+                <li>We do not collect your location</li>
+                <li>We do not access your contacts or messages</li>
+                <li>We do not track you across other apps or websites</li>
+                <li>We do not sell or share personal data with advertisers</li>
+                <li>We do not use analytics or tracking SDKs</li>
+                <li>We do not store any data on external servers (all reading data is on-device only)</li>
+            </ul>
 
-    <h3>2. Data We Do NOT Collect</h3>
-    <ul>
-        <li>We do not collect your location</li>
-        <li>We do not access your contacts or messages</li>
-        <li>We do not track you across other apps or websites</li>
-        <li>We do not sell or share personal data with advertisers</li>
-        <li>We do not use analytics or tracking SDKs</li>
-        <li>We do not store any data on external servers (all reading data is on-device only)</li>
-    </ul>
+            <h3>3. Camera & Photo Library</h3>
+            <p>The camera is used solely to scan book barcodes. Photos are used solely to set custom book covers. We do not store, upload, or process camera/photo data beyond these purposes.</p>
 
-    <h3>3. Camera & Photo Library</h3>
-    <p>The camera is used solely to scan book barcodes. Photos are used solely to set custom book covers. We do not store, upload, or process camera/photo data beyond these purposes.</p>
+            <h3>4. Notifications</h3>
+            <p>We send local notifications (reading reminders, streak alerts, weekly summaries) only if you grant permission. These are generated on your device — no data is sent to external servers. You can disable notifications at any time in iOS Settings.</p>
 
-    <h3>4. Notifications</h3>
-    <p>We send local notifications (reading reminders, streak alerts, weekly summaries) only if you grant permission. These are generated on your device — no data is sent to external servers. You can disable notifications at any time in iOS Settings.</p>
+            <h3>5. Children's Privacy</h3>
+            <p>BookFirst is not directed at children under 13. We do not knowingly collect data from children.</p>
 
-    <h3>5. Children's Privacy</h3>
-    <p>BookFirst is not directed at children under 13. We do not knowingly collect data from children.</p>
+            <h3>6. Data Retention & Deletion</h3>
+            <p>All reading data is stored locally on your device using Apple's SwiftData framework. Deleting the app removes all data permanently. Subscription data is managed by Apple and RevenueCat — you can manage subscriptions in Settings > Subscriptions.</p>
 
-    <h3>6. Data Retention & Deletion</h3>
-    <p>All reading data is stored locally on your device using Apple's SwiftData framework. Deleting the app removes all data permanently. Subscription data is managed by Apple and RevenueCat — you can manage subscriptions in Settings > Subscriptions.</p>
+            <h3>7. Your Rights</h3>
+            <p>Since we don't collect personal data on servers, there is no data to request, export, or delete from our side. All your data lives on your device and is under your control.</p>
 
-    <h3>7. Your Rights</h3>
-    <p>Since we don't collect personal data on servers, there is no data to request, export, or delete from our side. All your data lives on your device and is under your control.</p>
+            <h3>8. Changes to This Policy</h3>
+            <p>We may update this policy from time to time. Changes will be posted on this page with an updated date.</p>
 
-    <h3>8. Changes to This Policy</h3>
-    <p>We may update this policy from time to time. Changes will be posted on this page with an updated date.</p>
+            <h3>9. Contact</h3>
+            <p>Questions? Email us at <a href="mailto:support@getbookfirst.com">support@getbookfirst.com</a></p>
+        </div>
+    </div>
 
-    <h3>9. Contact</h3>
-    <p>Questions? Email us at <a href="mailto:support@getbookfirst.com">support@getbookfirst.com</a></p>
-</section>
+    <div class="legal-content" id="terms-content">
+        <div class="legal-section">
+            <h2>Terms of Use</h2>
+            <p><strong>Last updated:</strong> March 24, 2026</p>
+            <p>By using BookFirst, you agree to these terms.</p>
 
-<section class="container legal" id="terms">
-    <h2>Terms of Use</h2>
-    <p><strong>Last updated:</strong> March 24, 2026</p>
-    <p>By using BookFirst, you agree to these terms.</p>
+            <h3>1. The Service</h3>
+            <p>BookFirst is a reading habit app that blocks distracting apps during scheduled reading windows and tracks your reading progress. The app requires iOS 17 or later.</p>
 
-    <h3>1. The Service</h3>
-    <p>BookFirst is a reading habit app that blocks distracting apps during scheduled reading windows and tracks your reading progress. The app requires iOS 17 or later.</p>
+            <h3>2. Subscriptions</h3>
+            <ul>
+                <li>BookFirst offers weekly and yearly auto-renewable subscriptions</li>
+                <li>Payment is charged to your Apple ID account at confirmation of purchase</li>
+                <li>Subscriptions automatically renew unless turned off at least 24 hours before the end of the current period</li>
+                <li>Your account is charged for renewal within 24 hours prior to the end of the current period</li>
+                <li>You can manage and cancel subscriptions in your device's Settings > Subscriptions</li>
+                <li>Free trial: if offered, the unused portion of a free trial is forfeited when you purchase a subscription</li>
+            </ul>
 
-    <h3>2. Subscriptions</h3>
-    <ul>
-        <li>BookFirst offers weekly and yearly auto-renewable subscriptions</li>
-        <li>Payment is charged to your Apple ID account at confirmation of purchase</li>
-        <li>Subscriptions automatically renew unless turned off at least 24 hours before the end of the current period</li>
-        <li>Your account is charged for renewal within 24 hours prior to the end of the current period</li>
-        <li>You can manage and cancel subscriptions in your device's Settings > Subscriptions</li>
-        <li>Free trial: if offered, the unused portion of a free trial is forfeited when you purchase a subscription</li>
-    </ul>
+            <h3>3. Screen Time & App Blocking</h3>
+            <p>BookFirst uses Apple's Screen Time API to block apps during your reading window. This requires your explicit permission. App blocking may not work as expected if Screen Time permissions are revoked or if iOS restrictions change. We are not responsible for any consequences of apps being blocked or unblocked.</p>
 
-    <h3>3. Screen Time & App Blocking</h3>
-    <p>BookFirst uses Apple's Screen Time API to block apps during your reading window. This requires your explicit permission. App blocking may not work as expected if Screen Time permissions are revoked or if iOS restrictions change. We are not responsible for any consequences of apps being blocked or unblocked.</p>
+            <h3>4. Content & Accuracy</h3>
+            <p>Book information (titles, covers, page counts) is sourced from third-party databases and may contain inaccuracies. Reading statistics and projections are estimates based on your input and should not be relied upon as precise measurements.</p>
 
-    <h3>4. Content & Accuracy</h3>
-    <p>Book information (titles, covers, page counts) is sourced from third-party databases and may contain inaccuracies. Reading statistics and projections are estimates based on your input and should not be relied upon as precise measurements.</p>
+            <h3>5. Disclaimer</h3>
+            <p>BookFirst is provided "as is" without warranties of any kind. We do not guarantee uninterrupted service, accuracy of reading stats, or that app blocking will work in all scenarios. BookFirst is not a medical app and makes no health claims — research statistics cited in the app are for motivational purposes and sourced from published studies.</p>
 
-    <h3>5. Disclaimer</h3>
-    <p>BookFirst is provided "as is" without warranties of any kind. We do not guarantee uninterrupted service, accuracy of reading stats, or that app blocking will work in all scenarios. BookFirst is not a medical app and makes no health claims — research statistics cited in the app are for motivational purposes and sourced from published studies.</p>
+            <h3>6. Limitation of Liability</h3>
+            <p>To the maximum extent permitted by law, BookFirst shall not be liable for any indirect, incidental, or consequential damages arising from use of the app.</p>
 
-    <h3>6. Limitation of Liability</h3>
-    <p>To the maximum extent permitted by law, BookFirst shall not be liable for any indirect, incidental, or consequential damages arising from use of the app.</p>
+            <h3>7. Changes</h3>
+            <p>We reserve the right to modify these terms at any time. Continued use of the app constitutes acceptance of updated terms.</p>
 
-    <h3>7. Changes</h3>
-    <p>We reserve the right to modify these terms at any time. Continued use of the app constitutes acceptance of updated terms.</p>
-
-    <h3>8. Contact</h3>
-    <p>Questions? Email us at <a href="mailto:support@getbookfirst.com">support@getbookfirst.com</a></p>
+            <h3>8. Contact</h3>
+            <p>Questions? Email us at <a href="mailto:support@getbookfirst.com">support@getbookfirst.com</a></p>
+        </div>
+    </div>
 </section>
 
 <footer>
     <div class="container">
         <p>&copy; 2026 BookFirst. All rights reserved.</p>
         <p style="margin-top: 8px;">
-            <a href="#privacy">Privacy Policy</a> &middot;
-            <a href="#terms">Terms of Use</a> &middot;
+            <a href="#" onclick="toggleLegal('privacy', document.querySelector('#privacy')); return false;">Privacy Policy</a> &middot;
+            <a href="#" onclick="toggleLegal('terms', document.querySelector('#terms')); return false;">Terms of Use</a> &middot;
             <a href="mailto:support@getbookfirst.com">Contact</a>
         </p>
     </div>
 </footer>
+
+<script>
+    function toggleLegal(id, btn) {
+        const content = document.getElementById(id + '-content');
+        const isOpen = content.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.legal-content').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.legal-toggle').forEach(el => el.classList.remove('active'));
+
+        // Open clicked one (if it wasn't already open)
+        if (!isOpen) {
+            content.classList.add('open');
+            btn.classList.add('active');
+            // Scroll to it
+            setTimeout(() => content.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+        }
+    }
+
+    // Auto-open if URL has hash
+    window.addEventListener('load', () => {
+        const hash = window.location.hash.replace('#', '');
+        if (hash === 'privacy' || hash === 'terms') {
+            const btn = document.getElementById(hash);
+            if (btn) toggleLegal(hash, btn);
+        }
+    });
+</script>
 
 </body>
 </html>
