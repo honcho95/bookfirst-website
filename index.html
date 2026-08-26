@@ -294,30 +294,31 @@
     <div class="legal-content" id="privacy-content">
         <div class="legal-section">
             <h2>Privacy Policy</h2>
-            <p><strong>Last updated:</strong> July 26, 2026</p>
-            <p>Bookside ("we", "our", "the app") is built privacy-first. This policy explains what data the app handles, where it lives, and your rights. Short version: your reading life stays on your device unless you choose to share it with friends; we never sell data and we show no ads.</p>
+            <p><strong>Last updated:</strong> August 25, 2026</p>
+            <p>Bookside ("we", "our", "the app") is built privacy-first. This policy explains what data the app handles, where it lives, and your rights. Short version: your reading data stays on your device unless you sign in. If you sign in, Bookside privately backs up supported reading metadata so it can be restored on your devices; only content you make social is visible to accepted friends. We never sell data and we show no ads.</p>
 
-            <h3>1. Data that stays on your device</h3>
+            <h3>1. Data that stays only on your device</h3>
             <ul>
-                <li>Your book library (titles, authors, covers, progress)</li>
-                <li>Your reading sessions, notes, quotes, saved words and statistics</li>
-                <li>Your reading goal, schedule and preferences</li>
+                <li>Imported ebook files, including your PDF and EPUB files, and their local file paths</li>
+                <li>Manually added cover image bytes and custom spine images</li>
+                <li>The opaque Screen Time tokens representing the apps and categories you select</li>
             </ul>
-            <p>None of this is sent to our servers unless you create an optional social account and choose to share it (see section 3).</p>
+            <p>You can use Bookside without signing in. In that case, your library, reading sessions, notes, quotes, saved words, statistics, goals, schedule and preferences remain on your device. If you sign in, supported metadata from those features is privately backed up as described in section 3. Ebook files, local file paths, manual-cover image bytes, custom spine images and Screen Time tokens are never included in account backup.</p>
 
             <h3>2. App blocking &amp; Screen Time</h3>
             <p>Blocking uses Apple's Screen Time (FamilyControls) framework. The apps you select are represented by opaque tokens that never leave your device — we cannot see which apps you choose or how you use them. You can revoke Screen Time access at any time in iOS Settings.</p>
 
-            <h3>3. Optional social account</h3>
-            <p>The friends features require signing in with Apple. If you do, the following is stored on our servers (hosted on Supabase, in the United States):</p>
+            <h3>3. Optional Bookside account, private backup &amp; social features</h3>
+            <p>Signing in with Apple is optional and is required for account backup and friends features. If you sign in, the following is stored on our servers (hosted on Supabase, in the United States):</p>
             <ul>
                 <li>Your email address — or Apple's private relay address, if you chose to hide it. It identifies your account and nothing else: we never send marketing email</li>
                 <li>Your handle and display name</li>
-                <li>The reading data you share: books (including cover images), finished sessions, session notes, reviews and quotes — except anything you mark as private, which never syncs</li>
+                <li><strong>Private account-backup metadata:</strong> your book and library metadata, catalog cover URLs, progress, ratings and reviews; reading sessions, notes, quotes and saved words; goals, contracts, quick breaks, shelf positions, decorations, reading schedule and supported preferences. This backup is used to restore your data and is not visible to other users</li>
+                <li><strong>Social content:</strong> the books, finished sessions, session notes, reviews and quotes you make social. Books you mark private and their related activity are not visible to friends</li>
                 <li>Your friends list, likes, comments and reports</li>
                 <li>A push notification token, if you allow notifications (used only for friend activity — never marketing; you can turn social notifications off in Settings)</li>
             </ul>
-            <p>Friends can only see your shared data once you have accepted each other. You can delete your account at any time in Settings → Account → Delete account — this removes your profile and everything you shared from our servers. Your local library stays on your device.</p>
+            <p>Friends can only see social content once you have accepted each other, and they cannot access your private account backup. You can delete your account at any time in Settings → Account → Delete account — this removes your profile, private backup and social data from our servers. Your local library stays on your current device, but local-only ebook files and custom image bytes cannot be restored after the app or device data is removed.</p>
 
             <h3>4. Analytics (opt-out)</h3>
             <p>We use PostHog to collect anonymous usage events (screens viewed, buttons tapped) to improve the app. No names, no book data, no notes, no identifiers for advertising, no cross-app tracking, no IDFA. You can switch analytics off at any time in Settings → Privacy. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">PostHog Privacy Policy</a></p>
@@ -339,7 +340,7 @@
             </ul>
 
             <h3>8. Your rights</h3>
-            <p>You can export or delete your local data by managing your library in the app, delete your social account in-app (section 3), and contact us for any privacy request at <a href="mailto:support@getbookfirst.com">support@getbookfirst.com</a>. If you are in the EU/EEA, you have the rights provided by the GDPR, including access, rectification and erasure.</p>
+            <p>You can export or delete your local data by managing your library in the app, delete your Bookside account and its private backup/social data in-app (section 3), and contact us for any privacy request at <a href="mailto:support@getbookfirst.com">support@getbookfirst.com</a>. If you are in the EU/EEA, you have the rights provided by the GDPR, including access, rectification and erasure.</p>
 
             <h3>9. Children</h3>
             <p>Bookside is not directed at children under 13, and the social features require an account under Apple's minimum age for Sign in with Apple in your region.</p>
@@ -391,7 +392,7 @@
             <h3>Common questions</h3>
             <p><strong>Blocking isn't working?</strong> Check that Bookside has Screen Time access in iOS Settings → Screen Time, and that you've selected apps to block in the session setup.</p>
             <p><strong>Purchase not showing?</strong> Open the paywall or Settings and tap Restore Purchases.</p>
-            <p><strong>Want your social data gone?</strong> Settings → Account → Delete account removes your profile and everything you shared from our servers.</p>
+            <p><strong>Want your account data gone?</strong> Settings → Account → Delete account removes your profile, private backup and social data from our servers.</p>
         </div>
     </div>
 </section>
