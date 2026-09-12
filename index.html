@@ -294,13 +294,13 @@
     <div class="legal-content" id="privacy-content">
         <div class="legal-section">
             <h2>Privacy Policy</h2>
-            <p><strong>Last updated:</strong> August 25, 2026</p>
+            <p><strong>Last updated:</strong> September 12, 2026</p>
             <p>Bookside ("we", "our", "the app") is built privacy-first. This policy explains what data the app handles, where it lives, and your rights. Short version: your reading data stays on your device unless you sign in. If you sign in, Bookside privately backs up supported reading metadata so it can be restored on your devices; only content you make social is visible to accepted friends. We never sell data and we show no ads.</p>
 
             <h3>1. Data that stays only on your device</h3>
             <ul>
                 <li>Imported ebook files, including your PDF and EPUB files, and their local file paths</li>
-                <li>Manually added cover image bytes and custom spine images</li>
+                <li>Custom spine images and original custom cover photos; reduced copies of cover photos are uploaded only if you enable cover sharing (see section 3)</li>
                 <li>The opaque Screen Time tokens representing the apps and categories you select</li>
             </ul>
             <p>You can use Bookside without signing in. In that case, your library, reading sessions, notes, quotes, saved words, statistics, goals, schedule and preferences remain on your device. If you sign in, supported metadata from those features is privately backed up as described in section 3. Ebook files, local file paths, manual-cover image bytes, custom spine images and Screen Time tokens are never included in account backup.</p>
@@ -315,21 +315,24 @@
                 <li>Your handle and display name</li>
                 <li><strong>Private account-backup metadata:</strong> your book and library metadata, catalog cover URLs, progress, ratings and reviews; reading sessions, notes, quotes and saved words; goals, contracts, quick breaks, shelf positions, decorations, reading schedule and supported preferences. This backup is used to restore your data and is not visible to other users</li>
                 <li><strong>Social content:</strong> the books, finished sessions, session notes, reviews and quotes you make social. Books you mark private and their related activity are not visible to friends</li>
-                <li>Your friends list, likes, comments and reports</li>
+                <li><strong>Optional custom cover photos:</strong> if you enable Share custom cover photos, reduced copies for your non-private books are uploaded to private Supabase storage. Friends can load a photo only after it is approved in moderation, while the book is shared, your sharing choice is enabled, and neither account has blocked the other. Moderators can review submitted cover photos to enforce community rules. These photos are separate from private account backup.</li>
+                <li>Your friends list, likes, comments, reports, and cover-moderation decisions</li>
                 <li>A push notification token, if you allow notifications (used only for friend activity — never marketing; you can turn social notifications off in Settings)</li>
             </ul>
             <p>Friends can only see social content once you have accepted each other, and they cannot access your private account backup. You can delete your account at any time in Settings → Account → Delete account — this removes your profile, private backup and social data from our servers. Your local library stays on your current device, but local-only ebook files and custom image bytes cannot be restored after the app or device data is removed.</p>
 
-            <h3>4. Analytics (opt-out)</h3>
-            <p>We use PostHog to collect anonymous usage events (screens viewed, buttons tapped) to improve the app. No names, no book data, no notes, no identifiers for advertising, no cross-app tracking, no IDFA. You can switch analytics off at any time in Settings → Privacy. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">PostHog Privacy Policy</a></p>
+            <p>Cover-photo sharing is off until you choose it, and can be changed in Settings → Account. Turning it off stops future access by friends; it does not erase copies somebody already saved. Uploaded photos remain accessible to you and moderators until removed through account deletion or storage cleanup. Your original device images are not deleted. Older versions uploaded custom covers to public URLs; current storage access requires authentication and the permissions described above. Previously downloaded or cached copies cannot be recalled.</p>
+
+            <h3>4. Optional analytics</h3>
+            <p>Optional analytics are off by default in the updated app and start only when you enable Share usage data in Settings → Usage data. PostHog then receives app interactions, onboarding choices, purchase-flow events, and basic device/app information associated with a random app identifier. Your book text, notes, and quotes are not included. We do not use IDFA, advertising identifiers, session replay, or cross-app tracking. You can withdraw this choice in the same setting at any time. The choice is local to the installation and is not restored from account backup. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">PostHog Privacy Policy</a></p>
 
             <h3>5. Purchases</h3>
-            <p>Subscriptions and purchases are processed by Apple and managed through RevenueCat, which receives anonymized transaction data to unlock your membership across devices. We never see your payment details. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></p>
+            <p>Subscriptions and purchases are processed by Apple and managed through RevenueCat, which receives transaction data and an app-specific customer identifier to unlock your membership across devices. We never see your payment details. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></p>
 
             <h3>6. Third-party lookups</h3>
             <ul>
                 <li><strong>Book search</strong> — your search query or scanned ISBN is sent to Google Books and Open Library to find book details. No personal data is attached.</li>
-                <li><strong>Word definitions</strong> — the word you look up is sent to dictionary services (Wiktionary via FreeDictionaryAPI). Nothing else is attached.</li>
+                <li><strong>Word definitions</strong> — the word you look up is sent to dictionaryapi.dev or FreeDictionaryAPI.com. Definitions include source and license attribution. These services receive the network information needed to respond, such as your IP address; we do not attach your Bookside account information.</li>
             </ul>
 
             <h3>7. What we never do</h3>
@@ -361,11 +364,11 @@
 
             <h3>2. Bookside Pro</h3>
             <ul>
-                <li><strong>Yearly</strong> — auto-renewing subscription with a 7-day free trial. Payment is charged to your Apple account at the end of the trial, then yearly until cancelled.</li>
+                <li><strong>Yearly</strong> — auto-renewing subscription, charged yearly until cancelled. Any eligible free trial, its duration, and the price afterward are displayed before purchase.</li>
                 <li><strong>Monthly</strong> — auto-renewing subscription, charged monthly until cancelled.</li>
                 <li><strong>Lifetime</strong> — a one-time purchase, yours forever.</li>
             </ul>
-            <p>Prices are shown in the app before any purchase. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period, and can be cancelled anytime in your Apple ID Settings → Subscriptions. Deleting the app does not cancel a subscription. Purchases can be restored from the paywall or Settings.</p>
+            <p>Prices are shown in the app before any purchase. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period, and can be cancelled anytime in your Apple ID Settings → Subscriptions. Deleting the app or your Bookside account does not cancel an Apple subscription. Purchases can be restored from the paywall or Settings.</p>
 
             <h3>3. Your content &amp; community rules</h3>
             <p>You keep all rights to the notes, reviews and quotes you create. If you use the social features, don't post content that is unlawful, hateful, harassing, sexually explicit, spam, or that infringes someone else's rights. You can report content and block users in the app; we review reports and may remove content or suspend accounts that break these rules.</p>
